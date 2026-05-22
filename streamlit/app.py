@@ -12,16 +12,6 @@ best_xgb = joblib.load(os.path.join(os.path.dirname(__file__), "aura.pk1"))
 st.title("📉 Customer Churn Prediction")
 st.markdown("#### Predict whether a customer is likely to leave based on their profile")
 st.markdown("---")
-st.markdown("""     <style>
-    [data-baseweb="select"] input { 
-        caret-color: transparent !important;
-        pointer-events: none !important;
-    }
-    [data-baseweb="select"] span { 
-        display: none !important; 
-    }
-    </style>
-""", unsafe_allow_html=True)
 
 # Input section
 st.subheader("👤 Customer Details")
@@ -29,13 +19,13 @@ st.subheader("👤 Customer Details")
 col1, col2 = st.columns(2)
 
 with col1:
-    contract = st.selectbox("📋 Contract Type", ["Month-to-month", "One year", "Two year"])
-    Online_Security = st.selectbox("🔒 Online Security", ["Yes", "No"])
-    internet_service = st.selectbox("🌐 Internet Service", ["DSL", "Fibre optic", "No"])
+    contract = st.radio("📋 Contract Type", ["Month-to-month", "One year", "Two year"])
+    Online_Security = st.radio("🔒 Online Security", ["Yes", "No"])
+    internet_service = st.radio("🌐 Internet Service", ["DSL", "Fibre optic", "No"])
 
 with col2:
-    payment_method = st.selectbox("💳 Payment Method", ["Electronic check", "Credit card(automatic)", "Mailed check", "Bank transfer(automatic)"])
-    tech_support = st.selectbox("🛠️ Tech Support", ["Yes", "No"])
+    payment_method = st.radio("💳 Payment Method", ["Electronic check", "Credit card(automatic)", "Mailed check", "Bank transfer(automatic)"])
+    tech_support = st.radio("🛠️ Tech Support", ["Yes", "No"])
     monthly_charges = st.slider("💰 Monthly Charges ($)", min_value=0, max_value=150, value=65)
 
 st.markdown("---")
