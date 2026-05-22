@@ -48,7 +48,7 @@ features[0, 4] = monthly_charges
 # Predict button
 if st.button("🔍 Predict Churn", use_container_width=True):
     prediction = best_xgb.predict(features)[0]
-    probability = best_xgb.predict_proba(features)[0][1]
+    probability = float(best_xgb.predict_proba(features)[0][1])
     churn_pct = round(probability * 100, 1)
 
     st.markdown("---")
@@ -69,10 +69,9 @@ if st.button("🔍 Predict Churn", use_container_width=True):
     col1, col2, col3 = st.columns(3)
     col1.metric("Churn Probability", f"{churn_pct}%")
     col2.metric("Risk Level", risk)
-    col3.metric("Lifetime Value at Risk", f"~${round(probability * 2101):,}")
-
+    col3.metric("Lifetime Value at Risk", f"~${round(churn_pct/100 * 2101):,}")
     # Result message
-    if prediction == 1:
+    if prediction >= 0.37:
         st.error(f"⚠️ This customer is **likely to churn** with {churn_pct}% probability!")
         st.markdown("### 💡 Recommended Actions:")
         if contract_month:
