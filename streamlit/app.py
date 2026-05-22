@@ -27,8 +27,10 @@ with col2:
     payment_method = st.radio("💳 Payment Method", ["Electronic check", "Credit card(automatic)", "Mailed check", "Bank transfer(automatic)"])
     tech_support = st.radio("🛠️ Tech Support", ["Yes", "No"])
     monthly_charges = st.slider("💰 Monthly Charges ($)", min_value=0, max_value=150, value=65)
+    tenure = st.slider("📅 Tenure (months)", 0, 72, 12)
 
 st.markdown("---")
+tenure = st.slider("📅 Tenure (months)", min_value=0, max_value=72, value=12)
 
 # Feature engineering
 contract_month = 1 if contract == "Month-to-month" else 0
@@ -38,6 +40,8 @@ internet_fibre = 1 if internet_service == "Fibre optic" else 0
 tech_support_no = 1 if tech_support == "No" else 0
 
 features = np.zeros((1, 40))
+features[0, 4] = tenure
+features[0, 7] = monthly_charges
 features[0, 12] = contract_month
 features[0, 22] = Online_Security_no
 features[0, 17] = payment_electronic
