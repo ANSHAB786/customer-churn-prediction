@@ -78,7 +78,7 @@ if st.button("🔍 Predict Churn", use_container_width=True):
         risk = "High Risk 🔴"
         color = "error"
     elif churn_pct >= 40:
-        risk = "Medium Risk 🟡"
+        risk = "Mid Risk 🟡"
         color = "warning"
     else:
         risk = "Low Risk 🟢"
