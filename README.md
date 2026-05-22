@@ -6,7 +6,7 @@ quantifies business impact, and delivers real-time predictions via a deployed St
 ---
 
 ## 🚀 Live Demo
-👉 [Click here to try the app](your-streamlit-url-here)
+👉 [Click here to try the app](https://customer-churn-prediction-taprurhllne6gk5y4nr5bq.streamlit.app/)
 
 ---
 
