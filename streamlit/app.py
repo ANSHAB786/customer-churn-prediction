@@ -27,13 +27,12 @@ with col2:
     payment_method = st.radio("💳 Payment Method", ["Electronic check", "Credit card(automatic)", "Mailed check", "Bank transfer(automatic)"])
     tech_support = st.radio("🛠️ Tech Support", ["Yes", "No"])
     monthly_charges = st.slider("💰 Monthly Charges ($)", min_value=0, max_value=150, value=65)
-    tenure = st.slider("📅 Tenure (months)", 0, 72, 12)
+    tenure = st.slider("📅 Tenure (months)", min_value=0, max_value=72, value=12)
 
 st.markdown("---")
-tenure = st.slider("📅 Tenure (months)", min_value=0, max_value=72, value=12)
-
 # Feature engineering
 contract_month = 1 if contract == "Month-to-month" else 0
+contract_one_year = 1 if contract == "One year" else 0
 Online_Security_no = 1 if Online_Security == "No" else 0
 payment_electronic = 1 if payment_method == "Electronic check" else 0
 internet_fibre = 1 if internet_service == "Fibre optic" else 0
@@ -43,12 +42,28 @@ features = np.zeros((1, 40))
 features[0, 4] = tenure
 features[0, 7] = monthly_charges
 features[0, 12] = contract_month
-features[0, 22] = Online_Security_no
-features[0, 17] = payment_electronic
+features[0, 13] = contract_one_year
+features[0, 18] = payment_electronic
+features[0, 23] = Online_Security_no
+features[0, 33] = tech_support_no
 features[0, 10] = internet_fibre
-features[0, 31] = tech_support_no
-features[0, 4] = monthly_charges
 
+# Feature engineering
+ #contract_month = 1 if contract == "Month-to-month" else 0
+#Online_Security_no = 1 if Online_Security == "No" else 0
+#payment_electronic = 1 if payment_method == "Electronic check" else 0
+#internet_fibre = 1 if internet_service == "Fibre optic" else 0
+#tech_support_no = 1 if tech_support == "No" else 0
+ ###
+#features = np.zeros((1, 40))
+#features[0, 4] = tenure
+#features[0, 7] = monthly_charges
+#features[0, 12] = contract_month
+#features[0, 22] = Online_Security_no
+#features[0, 17] = payment_electronic
+#features[0, 10] = internet_fibre
+#features[0, 31] = tech_support_no
+ ###
 # Predict button
 if st.button("🔍 Predict Churn", use_container_width=True):
     prediction = best_xgb.predict(features)[0]
