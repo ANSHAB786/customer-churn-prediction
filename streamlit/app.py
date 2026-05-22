@@ -12,10 +12,14 @@ best_xgb = joblib.load(os.path.join(os.path.dirname(__file__), "aura.pk1"))
 st.title("📉 Customer Churn Prediction")
 st.markdown("#### Predict whether a customer is likely to leave based on their profile")
 st.markdown("---")
-st.markdown("""    <style>
-    .stSelectbox [data-baseweb="select"] span { display: none; }
-    div[data-testid="stMetricValue"] { font-size: 2rem; }
-    input[class] { pointer-events: none; }
+st.markdown("""     <style>
+    [data-baseweb="select"] input { 
+        caret-color: transparent !important;
+        pointer-events: none !important;
+    }
+    [data-baseweb="select"] span { 
+        display: none !important; 
+    }
     </style>
 """, unsafe_allow_html=True)
 
