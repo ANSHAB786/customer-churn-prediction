@@ -50,7 +50,7 @@ features[0, 10] = internet_fibre
 
 # default silent features 
 
-features[0, 5] = 1   # PhoneService = Yes
+features[0, 6] = 1   # PhoneService = Yes
 features[0, 8] = monthly_charges * tenure 
 
 # Feature engineering
