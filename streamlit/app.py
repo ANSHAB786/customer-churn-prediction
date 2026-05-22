@@ -56,13 +56,13 @@ if st.button("🔍 Predict Churn", use_container_width=True):
 
     # Risk level
     if churn_pct >= 70:
-        risk = "🔴 High Risk"
+        risk = "High Risk 🔴"
         color = "error"
     elif churn_pct >= 40:
-        risk = "🟡 Medium Risk"
+        risk = "Medium Risk 🟡"
         color = "warning"
     else:
-        risk = "🟢 Low Risk"
+        risk = "Low Risk 🟢"
         color = "success"
 
     # Metrics row
@@ -71,7 +71,7 @@ if st.button("🔍 Predict Churn", use_container_width=True):
     col2.metric("Risk Level", risk)
     col3.metric("Lifetime Value at Risk", f"~${round(churn_pct/100 * 2101):,}")
     # Result message
-    if prediction >= 0.37:
+    if probability >= 0.37:
         st.error(f"⚠️ This customer is **likely to churn** with {churn_pct}% probability!")
         st.markdown("### 💡 Recommended Actions:")
         if contract_month:
@@ -89,8 +89,22 @@ if st.button("🔍 Predict Churn", use_container_width=True):
     else:
         st.success(f"✅ This customer is **not likely to churn** with only {churn_pct}% probability!")
         st.markdown("### 💡 Retention Tips:")
-        st.markdown("- 🌟 Send a **loyalty reward** to keep engagement high")
-        st.markdown("- 📧 Check in with a **satisfaction survey**")
+    
+    if contract_month == 0:
+        st.markdown("- 📋 Customer is on a **long-term contract** — great for retention!")
+    if Online_Security_no == 0:
+        st.markdown("- 🔒 Customer has **Online Security** — keep offering security features")
+    if payment_electronic == 0:
+        st.markdown("- 💳 Customer uses **automatic payment** — low churn risk, reward them")
+    if internet_fibre == 0:
+        st.markdown("- 🌐 Customer uses **DSL** — stable and satisfied, send a loyalty reward")
+    if tech_support_no == 0:
+        st.markdown("- 🛠️ Customer has **Tech Support** — they feel supported, keep it up")
+    if monthly_charges <= 92:
+        st.markdown("- 💰 Monthly charges are **reasonable** — customer likely finds value")
+    
+    st.markdown("- 🌟 Send a **loyalty reward** to keep engagement high")
+    st.markdown("- 📧 Check in with a **satisfaction survey**")
 
 st.markdown("---")
 st.caption("Built by Anshab Shaikh | Customer Churn Prediction System | XGBoost Model")
