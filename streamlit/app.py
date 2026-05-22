@@ -6,7 +6,7 @@ import numpy as np
 from xgboost import  XGBClassifier
 # Loading our saved model
 
-best_xgb = joblib.load(r"C:\Users\ANSHAB\OneDrive\Documents\Projects\Customer_churn_Ai\Notebook\aura.pk1")
+best_xgb = joblib.load(r"C:\Users\ANSHAB\OneDrive\Documents\Projects\Customer_churn_Ai\streamlit\aura.pk1")
 
 st.set_page_config(page_title="Customer Churn Predictor", page_icon="📊")
 
