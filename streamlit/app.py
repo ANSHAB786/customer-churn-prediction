@@ -48,11 +48,6 @@ features[0, 22] = Online_Security_no
 features[0, 31] = tech_support_no
 features[0, 10] = internet_fibre
 
-# default silent features 
-
-features[0, 6] = 1   # PhoneService = Yes
-features[0, 8] = monthly_charges * tenure 
-
 # Feature engineering
  #contract_month = 1 if contract == "Month-to-month" else 0
 #Online_Security_no = 1 if Online_Security == "No" else 0
