@@ -43,9 +43,9 @@ features[0, 4] = tenure
 features[0, 7] = monthly_charges
 features[0, 12] = contract_month
 features[0, 13] = contract_one_year
-features[0, 18] = payment_electronic
-features[0, 23] = Online_Security_no
-features[0, 33] = tech_support_no
+features[0, 17] = payment_electronic
+features[0, 22] = Online_Security_no
+features[0, 31] = tech_support_no
 features[0, 10] = internet_fibre
 
 # Feature engineering
